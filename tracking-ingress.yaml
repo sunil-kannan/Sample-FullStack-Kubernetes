@@ -1,0 +1,27 @@
+
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: tracking-ingress
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+spec:
+  ingressClassName: nginx
+  rules:
+  - host: tracking-check.com
+    http:
+      paths:
+      - path: /tracking
+        pathType: Prefix
+        backend:
+          service:
+            name: tracking-frontend-service
+            port:
+              number: 4200
+      - path: /api
+        pathType: Prefix
+        backend:
+          service:
+            name: tracking-backend-service
+            port: 
+              number: 8085

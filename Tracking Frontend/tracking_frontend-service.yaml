@@ -1,0 +1,14 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: tracking-frontend-service
+spec:
+  selector:
+    app: tracking-frontend-deployment
+  ports:
+    - port:  4200
+      targetPort: 4200
+      protocol: TCP
+
+
+

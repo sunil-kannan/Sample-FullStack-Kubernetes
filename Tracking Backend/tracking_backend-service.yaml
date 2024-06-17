@@ -1,0 +1,13 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name:  tracking-backend-service
+spec:
+  selector:
+    app: tracking-backend-deployment # This selector targets Pods with the label app set to tracking-backend-deployment
+  type: NodePort
+  ports:
+    - port: 8085  # port number that the Service listens on internally within the cluster
+      targetPort: 8085 # port number that incoming traffic should be forwarded to on the Pods
+      nodePort: 30102 # static port number on each Node where the Service is accessible from outside the cluster
+      protocol: TCP

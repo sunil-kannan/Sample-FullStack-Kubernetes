@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: tracking-frontend-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: tracking-frontend-deployment
+  template:
+    metadata:
+      labels:
+        editor: vscode
+    spec:
+      containers:
+        - name: tracking-frontend-container  # Corrected container name
+          image: tracking_frontend:v1
+          ports:
+            - containerPort: 80
