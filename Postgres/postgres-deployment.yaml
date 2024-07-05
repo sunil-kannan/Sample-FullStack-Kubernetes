@@ -12,6 +12,9 @@ spec:
       labels:
         app: postgres-deployment
     spec:
+      securityContext:
+          runAsUser: 2000  # UID of the user owning the folder
+          fsGroup: 3000    # GID of the user owning the folder
       containers:
       - name: postgres
         image: postgres
@@ -27,3 +30,4 @@ spec:
       - name: postgres-storage
         persistentVolumeClaim:
           claimName: postgres-pvc
+~                                   
